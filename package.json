@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/OstappMelnykk/edu-load-distribution-frontend/issues"
   },
-  "homepage": "https://github.com/OstappMelnykk/edu-load-distribution-frontend#readme"
+  "homepage": "https://github.com/OstappMelnykk/edu-load-distribution-frontend#readme",
+  "dependencies": {
+    "@angular/cli": "^19.1.8"
+  }
 }
