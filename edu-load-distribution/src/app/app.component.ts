@@ -1,12 +1,28 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+import {AuthService} from './core/services/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  template: '<router-outlet></router-outlet>',
-  styleUrl: ''
+    selector: 'app-root',
+    imports: [RouterOutlet, NavbarComponent],
+    templateUrl: 'app.component.html',
+    styleUrl: 'app.component.scss'
 })
 export class AppComponent {
-  title = 'edu-load-distribution';
+    title = 'edu-load-distribution';
+    isAuthenticated: boolean = false;
+    private authStatusSub!: Subscription;
+
+    constructor(private authService: AuthService,) {
+        this.isAuthenticated = authService.isAuthenticated()
+        this.authStatusSub = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
+            this.isAuthenticated = isAuthenticated;
+        });
+    }
+
+    ngOnDestroy() {
+        this.authStatusSub.unsubscribe();
+    }
 }
