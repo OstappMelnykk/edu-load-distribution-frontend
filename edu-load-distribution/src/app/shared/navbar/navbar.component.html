@@ -1,7 +1,10 @@
 <nav class="navbar">
-    <a routerLink="/dashboard" class="nav-link">Main Page</a>
-    <a routerLink="/teachers" class="nav-link">Teachers</a>
-    <a routerLink="/subjects" class="nav-link">Subjects</a>
-    <a routerLink="/workloads" class="nav-link">Workloads</a>
-    <button (click)="logout()" class="logout-btn">Logout</button>
+    <div class="navbar__links">
+        <a routerLink="/dashboard" class="navbar__link">Main Page</a>
+        <a routerLink="/teachers" class="navbar__link">Teachers</a>
+        <a routerLink="/subjects" class="navbar__link">Subjects</a>
+        <a routerLink="/workloads" class="navbar__link">Workloads</a>
+    </div>
+
+    <button (click)="logout()" class="navbar__logout-button">Logout</button>
 </nav>
