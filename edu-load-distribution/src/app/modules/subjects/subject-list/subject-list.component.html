@@ -1,1 +1,62 @@
-<p>subject-list works!</p>
+<div class="subjects">
+    <div class="subjects-header">
+        <div>Name</div>
+        <div>Lecture Hours</div>
+        <div>Practice Hours</div>
+        <div>Total Hours</div>
+        <div>Edit</div>
+        <div>Delete</div>
+    </div>
+    <div class="subjects-row" *ngFor="let subject of subjects">
+        <div>{{ subject.name }}</div>
+        <div>{{ subject.lectureHours }}</div>
+        <div>{{ subject.practiceHours }}</div>
+        <div>{{ subject.totalHours }}</div>
+        <div>
+            <button (click)="editSubject(subject.id)" class="edit-btn">Edit</button>
+        </div>
+        <div>
+            <button (click)="deleteSubject(subject.id)" class="delete-btn">Delete</button>
+        </div>
+    </div>
+</div>
+
+@if (isAddSubjectClicked) {
+    <div class="form-container">
+        <h2>Add Subject</h2>
+        <label for="newName">Name:</label>
+        <input id="newName" [(ngModel)]="newSubject.name" />
+
+        <label for="newLectureHours">Lecture Hours:</label>
+        <input id="newLectureHours" type="number" [(ngModel)]="newSubject.lectureHours" />
+
+        <label for="newPracticeHours">Practice Hours:</label>
+        <input id="newPracticeHours" type="number" [(ngModel)]="newSubject.practiceHours" />
+
+        <div class="button-group">
+            <button (click)="saveNewSubject()" class="save-btn">Save</button>
+            <button (click)="toggleAdding()" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+}
+@else if (isEditSubjectClicked) {
+    <div class="form-container">
+        <h2>Edit Subject</h2>
+        <label for="name">Name:</label>
+        <input id="name" [(ngModel)]="subject.name" />
+
+        <label for="lectureHours">Lecture Hours:</label>
+        <input id="lectureHours" type="number" [(ngModel)]="subject.lectureHours" />
+
+        <label for="practiceHours">Practice Hours:</label>
+        <input id="practiceHours" type="number" [(ngModel)]="subject.practiceHours" />
+
+        <div class="button-group">
+            <button (click)="saveSubject()" class="save-btn">Save</button>
+            <button (click)="toggleEdit()" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+}
+@else {
+    <button (click)="addSubject()" class="add-btn">➕ Add New Subject</button>
+}
