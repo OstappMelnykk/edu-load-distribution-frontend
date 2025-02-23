@@ -14,7 +14,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [authGuard] // Захист маршруту
+    canActivate: [authGuard]
   },
   {
     path: 'subjects',

@@ -1,1 +1,36 @@
-<p>{{ this.currentUser | json}}</p>
+<div class="user-profile">
+    <h2>User Profile</h2>
+
+    <div *ngIf="currentTeacher; else loading">
+        <p><strong>First Name:</strong> {{ currentTeacher.firstName }} {{ currentTeacher.lastName }}</p>
+        <p><strong>Email:</strong> {{ currentUser.email }}</p>
+        <p><strong>Position:</strong> {{ currentTeacher.position }}</p>
+        <p><strong>Experience (years):</strong> {{ currentTeacher.experience }}</p>
+        <p><strong>Roles:</strong> {{ currentUser.roles.join(', ') }}</p>
+    </div>
+
+    <ng-template #loading>
+        <p>Loading teacher details...</p>
+    </ng-template>
+
+    <div class="adfadf" *ngFor="let workload of currentTeacherWorklods">
+        <h3>Teacher Workload: {{ workload.subjectId.name }}</h3>
+        <div class="workload-details">
+            <div class="workload-item">
+                <strong>Group:</strong> {{ workload.groupNumber }}
+            </div>
+            <div class="workload-item">
+                <strong>Hours:</strong> {{ workload.subjectId.hours }}
+            </div>
+            <div class="workload-item">
+                <strong>Position:</strong> {{ workload.teacherId.position }}
+            </div>
+            <div class="workload-item">
+                <strong>Teacher's Name:</strong> {{ workload.teacherId.firstName }} {{ workload.teacherId.lastName }}
+            </div>
+            <div class="workload-item">
+                <strong>Degree:</strong> {{ workload.teacherId.degree }}
+            </div>
+        </div>
+    </div>
+</div>
