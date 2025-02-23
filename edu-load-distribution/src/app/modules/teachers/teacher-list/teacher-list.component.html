@@ -1,1 +1,72 @@
-<p>teacher-list works!</p>
+<div class="teachers">
+    <div class="teachers-header">
+        <div>firstName</div>
+        <div>lastName</div>
+        <div>middleName</div>
+        <div>degree</div>
+        <div>position</div>
+        <div>experience</div>
+        <div>View details</div>
+    </div>
+    <div *ngFor="let teacher of teachers">
+        <div class="teachers-row">
+            <div>{{ teacher.firstName }}</div>
+            <div>{{ teacher.lastName }}</div>
+            <div>{{ teacher.middleName }}</div>
+            <div>{{ teacher.degree }}</div>
+            <div>{{ teacher.position }}</div>
+            <div>{{ teacher.experience }}</div>
+
+            <div>
+                <button (click)="viewDetails(teacher.id)" class="edit-btn">
+                    {{ !(isViewDetaildClicked && this.TeacherIdToView === teacher.id) ? "ViewDetails": "Hide"}}
+                </button>
+            </div>
+        </div>
+
+        @if (isViewDetaildClicked && this.TeacherIdToView === teacher.id) {
+            @for (workload of teacherWorkloads; track workload.id) {
+                <div class="adfadf">
+                    <h3>Teacher Workload: {{ workload.subjectId.name }}</h3>
+                    <div class="workload-details">
+                        <div class="workload-item">
+                            <strong>Group:</strong> {{ workload.groupNumber }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Year:</strong> {{ workload.year }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Lecture hours:</strong> {{ workload.subjectId.lectureHours }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Practice hours:</strong> {{ workload.subjectId.practiceHours }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Total hours:</strong> {{ workload.subjectId.totalHours }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Position:</strong> {{ workload.teacherId.position }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Teacher's Name:</strong> {{ workload.teacherId.firstName }} {{ workload.teacherId.lastName }}
+                        </div>
+                        <div class="workload-item">
+                            <strong>Degree:</strong> {{ workload.teacherId.degree }}
+                        </div>
+                    </div>
+                    <div class="button-div">
+                        <button (click)="deleteWorkload(workload.id, teacher.id)" class="delete-btn">DELETE</button>
+
+                    </div>
+                </div>
+            } @empty {
+                <p>this  teacher doesent have any workloads yet</p>
+            }
+
+        }
+    </div>
+</div>
+
+
+
+
