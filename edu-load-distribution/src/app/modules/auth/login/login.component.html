@@ -3,34 +3,35 @@
 
   <form (ngSubmit)="login()">
     <div class="form-group">
-      <label for="email">Електронна пошта:</label>
+      <label for="email">Email:</label>
       <input
         type="email"
         id="email"
         [(ngModel)]="email"
         name="email"
         required
-        placeholder="Введіть електронну пошту"
+        placeholder="Enter email"
         class="form-control"
       />
     </div>
 
     <div class="form-group">
-      <label for="password">Пароль:</label>
+      <label for="password">Password:</label>
       <input
         type="password"
         id="password"
         [(ngModel)]="password"
         name="password"
         required
-        placeholder="Введіть пароль"
+        placeholder="Enter password"
         class="form-control"
       />
     </div>
 
-    <button type="submit" class="btn btn-primary">Увійти</button>
+    <button type="submit" class="btn btn-primary">login</button>
   </form>
 
-  <p>Немає акаунта? <a routerLink="/register">Зареєструйтеся тут</a></p>
+  <p>Don't have an account?</p>
+  <a routerLink="/register">Register here</a>
 </div>
 

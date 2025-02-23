@@ -1,117 +1,117 @@
-
 <div class="register-container">
-  <h2>Реєстрація</h2>
+    <h2>Registration</h2>
 
-  <form (ngSubmit)="registerUser()">
+    <form (ngSubmit)="registerUser()">
+        <div class="form-row">
+            <div class="personal-info">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        [(ngModel)]="firstName"
+                        name="firstName"
+                        required
+                        placeholder="Enter first name"
+                        class="form-control"
+                    />
+                </div>
 
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        [(ngModel)]="lastName"
+                        name="lastName"
+                        required
+                        placeholder="Enter last name"
+                        class="form-control"
+                    />
+                </div>
 
-    <div class="form-group">
-      <label for="email">Електронна пошта:</label>
-      <input
-        type="email"
-        id="email"
-        [(ngModel)]="email"
-        name="email"
-        required
-        placeholder="Введіть електронну пошту"
-        class="form-control"
-      />
-    </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name:</label>
+                    <input
+                        type="text"
+                        id="middleName"
+                        [(ngModel)]="middleName"
+                        name="middleName"
+                        placeholder="Enter middle name"
+                        class="form-control"
+                    />
+                </div>
 
-    <div class="form-group">
-      <label for="password">Пароль:</label>
-      <input
-        type="password"
-        id="password"
-        [(ngModel)]="password"
-        name="password"
-        required
-        placeholder="Введіть пароль"
-        class="form-control"
-      />
-    </div>
+                <div class="form-group">
+                    <label for="degree">Degree:</label>
+                    <input
+                        type="text"
+                        id="degree"
+                        [(ngModel)]="degree"
+                        name="degree"
+                        placeholder="Enter degree"
+                        class="form-control"
+                    />
+                </div>
 
+                <div class="form-group">
+                    <label for="position">Position:</label>
+                    <input
+                        type="text"
+                        id="position"
+                        [(ngModel)]="position"
+                        name="position"
+                        placeholder="Enter position"
+                        class="form-control"
+                    />
+                </div>
 
-    <div class="form-group">
-      <label for="firstName">Ім'я:</label>
-      <input
-        type="text"
-        id="firstName"
-        [(ngModel)]="firstName"
-        name="firstName"
-        required
-        placeholder="Введіть ім'я"
-        class="form-control"
-      />
-    </div>
+                <div class="form-group">
+                    <label for="experience">Experience (years):</label>
+                    <input
+                        type="number"
+                        id="experience"
+                        [(ngModel)]="experience"
+                        name="experience"
+                        min="1"
+                        max="50"
+                        placeholder="Enter experience"
+                        class="form-control"
+                    />
+                </div>
+            </div>
 
-    <div class="form-group">
-      <label for="lastName">Прізвище:</label>
-      <input
-        type="text"
-        id="lastName"
-        [(ngModel)]="lastName"
-        name="lastName"
-        required
-        placeholder="Введіть прізвище"
-        class="form-control"
-      />
-    </div>
+            <div class="contact-info">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        [(ngModel)]="email"
+                        name="email"
+                        required
+                        placeholder="Enter email"
+                        class="form-control"
+                    />
+                </div>
 
-    <div class="form-group">
-      <label for="middleName">По батькові:</label>
-      <input
-        type="text"
-        id="middleName"
-        [(ngModel)]="middleName"
-        name="middleName"
-        placeholder="Введіть по батькові"
-        class="form-control"
-      />
-    </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        [(ngModel)]="password"
+                        name="password"
+                        required
+                        placeholder="Enter password"
+                        class="form-control"
+                    />
+                </div>
+            </div>
+        </div>
 
-    <div class="form-group">
-      <label for="degree">Ступінь:</label>
-      <input
-        type="text"
-        id="degree"
-        [(ngModel)]="degree"
-        name="degree"
-        placeholder="Введіть ступінь"
-        class="form-control"
-      />
-    </div>
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
 
-    <div class="form-group">
-      <label for="position">Посада:</label>
-      <input
-        type="text"
-        id="position"
-        [(ngModel)]="position"
-        name="position"
-        placeholder="Введіть посаду"
-        class="form-control"
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="experience">Досвід (роки):</label>
-      <input
-        type="number"
-        id="experience"
-        [(ngModel)]="experience"
-        name="experience"
-        min="1"
-        max="50"
-        placeholder="Введіть досвід"
-        class="form-control"
-      />
-    </div>
-
-
-
-    <button type="submit" class="btn btn-primary">Зареєструватися</button>
-  </form>
-
-  <p>Вже є акаунт? <a routerLink="/login">Увійти</a></p>
+    <p>Already have an account? <a routerLink="/login">Login</a></p>
 </div>
