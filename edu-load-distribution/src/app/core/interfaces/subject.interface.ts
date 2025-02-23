@@ -1,5 +1,7 @@
 export interface ISubject {
   id: string,
   name: string,
-  hours: number
+  lectureHours: number,
+  practiceHours: number,
+  totalHours: number,
 }

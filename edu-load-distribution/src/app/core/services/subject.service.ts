@@ -3,6 +3,8 @@ import {ISubject} from '../interfaces/subject.interface';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import {ISubjectCreateDTO} from '../interfaces/DTOs/subject-create-DTO.interface';
+import {ISubjectUpdateDTO} from '../interfaces/DTOs/subject-update-DTO.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +22,11 @@ export class SubjectService {
     return this.http.get<ISubject>(`${this.apiUrl}/get/${id}`);
   }
 
-  createSubject(subject: ISubject): Observable<{ id: string }> {
+  createSubject(subject: ISubjectCreateDTO): Observable<{ id: string }> {
     return this.http.post<{ id: string }>(`${this.apiUrl}/create`, subject);
   }
 
-  updateSubject(id: string, subject: ISubject): Observable<{ id: string }> {
+  updateSubject(id: string, subject: ISubjectUpdateDTO): Observable<{ id: string }> {
     return this.http.put<{ id: string }>(`${this.apiUrl}/update/${id}`, subject);
   }
 
