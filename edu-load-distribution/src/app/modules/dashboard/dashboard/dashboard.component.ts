@@ -1,30 +1,52 @@
 import { Component } from '@angular/core';
 import {AuthService} from '../../../core/services/auth.service';
 import {IUser} from '../../../core/interfaces/user.interface';
-import {JsonPipe, NgForOf, NgIf} from '@angular/common';
+import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {ITeacher} from '../../../core/interfaces/teacher.interface';
 import {TeacherService} from '../../../core/services/teacher.service';
 import {ITeacherWorkload} from '../../../core/interfaces/teacher-workload.interface';
+import {WorkloadService} from '../../../core/services/workload.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
     imports: [
-        NgIf,
-        NgForOf,
-        JsonPipe
+        CommonModule,
+        FormsModule
+
     ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-    public currentUser!: IUser;
-    public currentTeacher: ITeacher | undefined;
+    public currentUser: IUser = {
+        id: " ",
+        email: " ",
+        password: " ",
+        roles: [" "],
+        teacherId: " ",
+    };
+
+
+    public currentTeacher: ITeacher = {
+        id: " ",
+        firstName: " ",
+        lastName: " ",
+        middleName: " ",
+        degree: " ",
+        position: " ",
+        experience: 1,
+    };
+
+
     public currentTeacherWorklods: ITeacherWorkload[] | undefined;
 
     constructor(
         private authService: AuthService,
-        private teacherService: TeacherService
-    ) {}
+        private teacherService: TeacherService,
+        private workloadService: WorkloadService,
+    ) {
+    }
 
     ngOnInit(): void {
 
@@ -37,6 +59,21 @@ export class DashboardComponent {
             }
         });
     }
+
+    deleteWorkload(workloadId: string) {
+        if (confirm('Do you really want to delete this item?')) {
+            this.workloadService.deleteWorkload(workloadId).subscribe({
+                next: () => {
+                    this.fetchCurrentUserWorkloads()
+                },
+                error: () => {
+                    console.error('Error');
+                },
+            });
+        }
+    }
+
+
 
     private fetchTeacherDetails(userId: string): void {
         this.teacherService.getTeacher(userId).subscribe(

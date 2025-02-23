@@ -1,3 +1,7 @@
+.user-profile-h2{
+    font-size: 25px;
+}
+
 .user-profile {
     background-color: #f9f9f9;
     padding: 20px;
@@ -21,14 +25,6 @@
 .user-profile strong {
     font-weight: bold;
 }
-
-
-
-
-
-
-
-
 
 
 .user-profile .adfadf {
@@ -58,33 +54,83 @@
     color: #444;
 }
 
-.user-profile .adfadf strong {
+
+.adfadf {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.adfadf h3 {
+    font-size: 1.5rem;
+    color: #343a40;
     font-weight: bold;
-    color: #007bff;
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+    margin-bottom: 10px;
 }
 
-.user-profile .adfadf p {
-    color: #555;
+.workload-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    border-top: 1px solid #e9ecef;
+    padding-top: 10px;
 }
 
-.user-profile .adfadf .teacher-workload {
-    margin-top: 10px;
-    padding: 12px;
-    background-color: #e9ecef;
+.workload-item {
+    background-color: #f8f9fa;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+
+    strong {
+        font-size: 1rem;
+        color: #007bff;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    p {
+        font-size: 0.9rem;
+        color: #495057;
+        margin: 0;
+    }
 }
 
-.user-profile .adfadf .teacher-workload p {
-    margin: 5px 0;
+.button-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+
+    .delete-btn {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #c82333;
+        }
+    }
 }
 
-.user-profile .adfadf .teacher-workload strong {
-    font-weight: bold;
-    color: #333;
-}
 
-.user-profile .adfadf .teacher-workload .workload-subject {
-    font-style: italic;
-    color: #777;
+
+.delete-btn{
+    background-color: #ff0606;
+    color: #fff;
 }
