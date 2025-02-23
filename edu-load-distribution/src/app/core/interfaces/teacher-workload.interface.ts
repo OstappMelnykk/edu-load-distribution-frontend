@@ -7,12 +7,15 @@ export interface ITeacherWorkload {
     middleName: string,
     degree: string,
     position: string,
-    experience: 0
+    experience: number
   },
   subjectId: {
     id: string,
     name: string,
-    hours: 0
+    lectureHours: number
+    practiceHours: number
+    totalHours: number
   },
-  groupNumber: string
+  groupNumber: string,
+  year: number,
 }

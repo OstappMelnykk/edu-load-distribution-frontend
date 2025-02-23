@@ -3,6 +3,8 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IWorkload} from '../interfaces/workload.interface';
+import {IWorkloadCreateDTO} from '../interfaces/DTOs/workload-create-DTO.interface';
+import {IWorkloadUpdateDTO} from '../interfaces/DTOs/workload-update-DTO.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +23,11 @@ export class WorkloadService {
     return this.http.get<IWorkload>(`${this.apiUrl}/get/${id}`);
   }
 
-  createWorkload(workload: IWorkload): Observable<IWorkload> {
+  createWorkload(workload: IWorkloadCreateDTO): Observable<IWorkload> {
     return this.http.post<IWorkload>(`${this.apiUrl}/create`, workload);
   }
 
-  updateWorkload(id: string, workload: IWorkload): Observable<IWorkload> {
+  updateWorkload(id: string, workload: IWorkloadUpdateDTO): Observable<IWorkload> {
     return this.http.put<IWorkload>(`${this.apiUrl}/update/${id}`, workload);
   }
 
