@@ -1,8 +1,9 @@
+
+
 <header>
-    @if (this.isAuthenticated) {
-        <app-navbar></app-navbar>
-    }
+    <app-navbar *ngIf="isAuthenticated"></app-navbar>
 </header>
+
 <main class="main">
     <router-outlet></router-outlet>
 </main>
