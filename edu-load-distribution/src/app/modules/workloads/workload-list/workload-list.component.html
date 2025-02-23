@@ -1,1 +1,183 @@
-<p>workload-list works!</p>
+<div class="teachers">
+    <div class="teachers-header">
+        <div>Workload</div>
+        <div>Teacher</div>
+        <div>Subject</div>
+    </div>
+
+    <button (click)="addWorkload()" class="add-btn">➕ Add New Subject</button>
+
+    <div class="form-section" *ngIf="iAsddWorkloadClicked">
+        <form #form="ngForm" (ngSubmit)="saveWorkload()" class="form-container">
+            <!-- Поле вибору предмету -->
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <select
+                    id="subject"
+                    [(ngModel)]="newWorkload.subjectId"
+                    name="subject"
+                    required
+                >
+                    <option value="" disabled selected>Select Subject</option>
+                    <option *ngFor="let subject of availableSubjects" [value]="subject">
+                        {{ subject }}
+                    </option>
+                </select>
+            </div>
+
+            <!-- Поле вибору викладача -->
+            <div class="form-group">
+                <label for="teacher">Teacher:</label>
+                <select
+                    id="teacher"
+                    [(ngModel)]="newWorkload.teacherId"
+                    name="teacher"
+                    required
+                >
+                    <option value="" disabled selected>Select Teacher</option>
+                    <option>{{ currentUser?.teacherId }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="group">Group:</label>
+                <input
+                    id="group"
+                    name="group"
+                    [(ngModel)]="newWorkload.groupNumber"
+                    required
+                />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="save-btn" [disabled]="form.invalid">
+                    Save
+                </button>
+                <button
+                    type="button"
+                    (click)="iAsddWorkloadClicked = false"
+                    class="cancel-btn"
+                >
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div *ngFor="let workload of teachersWorkloads" class="teachers-row">
+        <div class="table">
+            <div><strong>Group Number:</strong></div>
+            <div>{{ workload.groupNumber }}</div>
+            <div><strong>Year:</strong></div>
+            <div>{{ workload.year }}</div>
+        </div>
+
+        <div class="table">
+            <div><strong>Teacher ID:</strong></div>
+            <div>{{ workload.teacherId?.id }}</div>
+            <div><strong>First Name:</strong></div>
+            <div>{{ workload.teacherId?.firstName }}</div>
+            <div><strong>Last Name:</strong></div>
+            <div>{{ workload.teacherId?.lastName }}</div>
+            <div><strong>Middle Name:</strong></div>
+            <div>{{ workload.teacherId?.middleName }}</div>
+            <div><strong>Degree:</strong></div>
+            <div>{{ workload.teacherId?.degree }}</div>
+            <div><strong>Position:</strong></div>
+            <div>{{ workload.teacherId?.position }}</div>
+            <div><strong>Experience:</strong></div>
+            <div>{{ workload.teacherId?.experience }}</div>
+        </div>
+
+        <div class="table">
+            <div><strong>Subject ID:</strong></div>
+            <div>{{ workload.subjectId?.id }}</div>
+            <div><strong>Subject Name:</strong></div>
+            <div>{{ workload.subjectId?.name }}</div>
+            <div><strong>Lecture Hours:</strong></div>
+            <div>{{ workload.subjectId?.lectureHours }}</div>
+            <div><strong>Practice Hours:</strong></div>
+            <div>{{ workload.subjectId?.practiceHours }}</div>
+            <div><strong>Total Hours:</strong></div>
+            <div>{{ workload.subjectId?.totalHours }}</div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+<!--
+<div class="teachers">
+    <div class="teachers-header">
+        <div>workload</div>
+        <div>teacher</div>
+        <div>subject</div>
+    </div>
+    <div *ngFor="let workload of teachersWorkloads">
+        <div class="teachers-row">
+            <div class="table">
+                <div><strong>Group Number:</strong></div>     <div>{{ workload.groupNumber }}</div>
+                <div><strong>Year:</strong></div>            <div>{{ workload.year }}</div>
+            </div>
+            <div class="table">
+                <div><strong>Teacher ID:</strong></div>   <div>{{ workload.teacherId.id }}</div>
+                <div><strong>First Name:</strong></div>   <div>{{ workload.teacherId.firstName }}</div>
+                <div><strong>Last Name:</strong></div>    <div>{{ workload.teacherId.lastName }}</div>
+                <div><strong>Middle Name:</strong></div>  <div>{{ workload.teacherId.middleName }}</div>
+                <div><strong>Degree:</strong> </div>      <div>{{ workload.teacherId.degree }}</div>
+                <div><strong>Position:</strong></div>     <div>{{ workload.teacherId.position }}</div>
+                <div><strong>Experience:</strong></div>   <div>{{ workload.teacherId.experience }}</div>
+            </div>
+            <div class="table">
+                <div><strong>Subject ID:</strong></div>     <div>{{ workload.subjectId.id }}</div>
+                <div><strong>Subject Name:</strong></div>   <div>{{ workload.subjectId.name }}</div>
+                <div><strong>Lecture Hours:</strong></div>  <div>{{ workload.subjectId.lectureHours }}</div>
+                <div><strong>Practice Hours:</strong></div> <div>{{ workload.subjectId.practiceHours }}</div>
+                <div><strong>Total Hours:</strong></div>    <div>{{ workload.subjectId.totalHours }}</div>
+            </div>
+        </div>
+    </div>
+
+    <button (click)="addWorkload()" class="add-btn">➕ Add New Subject</button>
+
+    @if (iAsddWorkloadClicked) {
+        <div class="form-section" *ngIf="iAsddWorkloadClicked">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <select id="subject" [(ngModel)]="newWorkload.subjectId" name="subject">
+                        <option value="" disabled selected>Subject ID</option>
+                        <option *ngFor="let subject of avaibleSubjects" [value]="subject">{{ subject }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="teacher">Teacher:</label>
+                    <select id="teacher" [(ngModel)]="newWorkload.teacherId" name="teacher">
+                        <option value="" disabled selected>Teacher ID</option>
+                        <option>{{ currentUser.teacherId }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="group">group:</label>
+                    <input id="group" name="group" [(ngModel)]="newWorkload.groupNumber" />
+
+                </div>
+
+                <div class="button-group">
+                    <button (click)="saveWorkload()" class="save-btn">Save</button>
+                    <button (click)="iAsddWorkloadClicked = false" class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+-->
